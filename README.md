@@ -40,18 +40,29 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+How to write custom middleware in Express
+How to create an API using Express 
+
 - [ ] Describe Middleware?
+
+Middleware in this context are 'helper functions' that can help validate data in req/res, handle errors, and much more. You can plug middleware into the code you've written after installing it using npm, or just write it yourself.
 
 - [ ] Describe a Resource?
 
+The resource method returns a new Resource object in Express. It can be further used to map path names, nest resources and more.
+
 - [ ] What can the API return to help clients know if a request was successful?
+
+res.status(200)
 
 - [ ] How can we partition our application into sub-applications?
 
+Using Routes, you can divide up your application by url, partitioning out different requests by type (i.e. users, posts, etc).
+
 ## Minimum Viable Product
 
-- [ ] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
-- [ ] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
+- [X] Configure an _npm script_ named _"server"_ that will execute your code using _nodemon_. Make _nodemon_ be a development time dependency only, it shouldn't be deployed to production.
+- [X] Configure an _npm script_ named _"start"_ that will execute your code using _node_.
 
 Design and build the necessary endpoints to:
 
@@ -69,6 +80,7 @@ The description of the structure and extra information about each _resource_ sto
 | Field       | Data Type | Metadata                                                                    |
 | ----------- | --------- | --------------------------------------------------------------------------- |
 | id          | number    | no need to provide it when creating projects, the database will generate it |
+
 | name        | string    | required.                                                                   |
 | description | string    | required.                                                                   |
 | completed   | boolean   | used to indicate if the project has been completed, not required            |
@@ -78,9 +90,13 @@ The description of the structure and extra information about each _resource_ sto
 | Field       | Data Type | Metadata                                                                                         |
 | ----------- | --------- | ------------------------------------------------------------------------------------------------ |
 | id          | number    | no need to provide it when creating posts, the database will automatically generate it.          |
+
 | project_id  | number    | required, must be the id of an existing project.                                                 |
+
 | description | string    | up to 128 characters long, required.                                                             |
+
 | notes       | string    | no size limit, required. Used to record additional notes or requirements to complete the action. |
+
 | completed   | boolean   | used to indicate if the action has been completed, not required                                  |
 
 ### Database Persistence Helpers
