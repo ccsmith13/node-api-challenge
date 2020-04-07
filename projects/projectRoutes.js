@@ -102,7 +102,7 @@ function validateProjectId(req, res, next) {
 }
 
 function validateProject(req, res, next) {
-    if (Object.entries(req.body).length === 0) {
+    if (Object.keys(req.body).length === 0 && req.body.constructor === Object) {
         res.status(400).json({ message: "missing user data" })
         next();
     }

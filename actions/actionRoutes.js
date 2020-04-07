@@ -23,7 +23,7 @@ router.get('/:id', logger, validateActionId, (req, res) => {
         })
 });
 
-router.delete('/:id', logger, validateActionId, validateAction, (req, res) => {
+router.delete('/:id', logger, validateActionId, (req, res) => {
     const id = req.params.id
     const action = db.get(id)
     db.remove(id)
@@ -66,7 +66,8 @@ function validateActionId(req, res, next) {
     }
 }
 function validateAction(req, res, next) {
-    if (Object.entries(req.body).length === 0) {
+    //console.log(req.body);
+    if (Object.keys(req.body).length === 0 && req.body.constructor === Object) {
         res.status(400).json({ message: "missing action data" })
         next();
     }
